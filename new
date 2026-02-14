@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day ❤️ Noor</title>
+    <!-- Font Awesome for heart icons & cute fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font for a soft romantic touch -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(145deg, #f9e2e7 0%, #fbc9d1 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Quicksand', sans-serif;
+            padding: 1rem;
+            margin: 0;
+        }
+        .valentine-card {
+            max-width: 700px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            border-radius: 48px 48px 48px 48px;
+            box-shadow: 0 30px 50px rgba(180, 60, 80, 0.25), 0 15px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding: 2.2rem 2rem 2.8rem;
+            border: 2px solid rgba(255,255,255,0.5);
+            transition: all 0.2s ease;
+            text-align: center;
+            position: relative;
+        }
+        /* floating hearts background */
+        .valentine-card::before {
+            content: "❤️";
+            font-size: 12rem;
+            color: rgba(255, 120, 140, 0.08);
+            position: absolute;
+            bottom: -20px;
+            right: -30px;
+            transform: rotate(15deg);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .card-inner {
+            position: relative;
+            z-index: 5;
+        }
+        /* name + petname section */
+        .to-header {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #b13e5c;
+            letter-spacing: 1px;
+            margin-bottom: 0.2rem;
+        }
+        .to-header i {
+            color: #e45c7b;
+            font-size: 2rem;
+            margin: 0 0.4rem;
+        }
+        .beloved-name {
+            background: #fff0f3;
+            display: inline-block;
+            padding: 0.4rem 2rem;
+            border-radius: 60px;
+            margin: 0.6rem 0 1.5rem;
+            box-shadow: 0 4px 10px #fbb6c3;
+            border: 1px solid white;
+        }
+        .beloved-name span {
+            font-size: 2.6rem;
+            font-weight: 700;
+            background: linear-gradient(130deg, #d62957, #b33b5c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .petname-tag {
+            font-size: 1.5rem;
+            margin-left: 0.5rem;
+            background: #ffe6eb;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            color: #b1325a;
+            font-weight: 600;
+            display: inline-block;
+            border: 1px dashed #ff8da1;
+        }
+        .heart-divider {
+            margin: 1.2rem 0 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .heart-divider i {
+            font-size: 1.6rem;
+            color: #dc4c6e;
+            opacity: 0.9;
+        }
+        .heart-divider .line {
+            height: 2px;
+            width: 100px;
+            background: linear-gradient(90deg, transparent, #e67994, transparent);
+        }
+        /* main message box */
+        .love-message {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 2rem 2rem;
+            border-radius: 40px;
+            margin: 1.5rem 0 2.2rem;
+            border: 2px solid white;
+            box-shadow: 0 12px 25px rgba(230, 100, 130, 0.2);
+            line-height: 1.9;
+            text-align: left;
+            font-size: 1.22rem;
+            color: #2d1f23;
+            position: relative;
+        }
+        .love-message p {
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .love-message i.fa-heart, .love-message i.fa-heart-pulse {
+            color: #e6395b;
+            font-size: 1.5rem;
+            margin-top: 0.2rem;
+            min-width: 30px;
+            text-align: center;
+        }
+        .love-message strong {
+            color: #b22b4f;
+            font-weight: 700;
+        }
+        .special-noor {
+            background: #fbc6d2;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #a01d44;
+            display: inline-block;
+            margin: 0 4px;
+        }
+        .propose-box {
+            background: #ffecf0;
+            border-radius: 70px;
+            padding: 1.4rem 2rem;
+            margin: 2.2rem 0 1.5rem;
+            border: 2px solid white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .propose-text {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #be3461;
+            letter-spacing: 1px;
+        }
+        .propose-text i {
+            font-size: 2.8rem;
+            margin: 0 0.3rem;
+            color: #e6345a;
+        }
+        .valentine-button {
+            background: #dc4c6e;
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 10px 0 #962c48, 0 5px 25px #f07b9b;
+            cursor: pointer;
+            transition: 0.08s linear;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            border: 2px solid #ffeef2;
+            margin-top: 0.5rem;
+        }
+        .valentine-button:active {
+            transform: translateY(6px);
+            box-shadow: 0 4px 0 #962c48, 0 5px 20px #f07b9b;
+        }
+        .secret-reveal {
+            background: white;
+            border-radius: 40px;
+            padding: 1.4rem 1.8rem;
+            border: 2px solid #ffc1cf;
+            color: #5e2a38;
+            font-size: 1.25rem;
+            margin: 2rem 0 0.8rem;
+            display: none;
+            align-items: center;
+            gap: 0.8rem;
+            text-align: left;
+            box-shadow: inset 0 2px 10px #ffe3e9;
+        }
+        .secret-reveal.show-secret {
+            display: flex;
+            animation: glow 0.7s ease;
+        }
+        .secret-reveal i {
+            font-size: 2.3rem;
+            color: #c92e53;
+        }
+        .footer-note {
+            margin-top: 1.8rem;
+            font-size: 1.2rem;
+            color: #ac4763;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .footer-note span {
+            background: #f9dbe3;
+            padding: 0.3rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid white;
+        }
+        @keyframes glow {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .floating-hearts i {
+            position: absolute;
+            color: #ffa5b9;
+            opacity: 0.3;
+            font-size: 1.8rem;
+            pointer-events: none;
+        }
+        /* micro interaction */
+        .heart-hover:hover {
+            transform: scale(1.1);
+            color: #ff4070;
+        }
+    </style>
+</head>
+<body>
+    <div class="valentine-card">
+        <div class="card-inner">
+            <!-- to: মহুয়া / noor -->
+            <div class="to-header">
+                <i class="fas fa-heart heart-hover"></i>  শুভ ভালোবাসা দিবস  <i class="fas fa-heart heart-hover"></i>
+            </div>
+            <div class="beloved-name">
+                <span>মহুয়া ইসলাম</span>
+                <span class="petname-tag"><i class="fas fa-feather-alt"></i> Noor <i class="fas fa-feather-alt"></i></span>
+            </div>
+            <!-- romantic divider -->
+            <div class="heart-divider">
+                <i class="fas fa-star"></i>
+                <span class="line"></span>
+                <i class="fas fa-heart"></i>
+                <span class="line"></span>
+                <i class="fas fa-star"></i>
+            </div>
+
+            <!-- main love message (valentine proposal) with corrected spelling -->
+            <div class="love-message">
+                <p>
+                    <i class="fas fa-heart"></i>
+                    <span><strong>প্রিয় নূর</strong> (মহুয়া), তুমি কি জানো? যেদিন থেকে তুমি আমার জীবনে এসেছ, সেদিন থেকে প্রতিদিন ভালোবাসা দিবস। তবুও ১৪ই ফেব্রুয়ারি বিশেষ কিছু বলার অজুহাত এনে দেয়।</span>
+                </p>
+                <p>
+                    <i class="fas fa-heart-pulse"></i>
+                    <span>তোমাকে 'নূর' নামে ডাকি – কারণ তুমি আমার জীবনের আলো। তুমি যেমন নূর, তেমনই মহুয়া – মনের মতো মানুষ। আজ আমি শুধু এটাই জানাতে চাই, <span class="special-noor"><i class="fas fa-infinity"></i> আমি তোমাকে ভালোবাসি <i class="fas fa-infinity"></i></span> শুধু আজ না, প্রতিদিন।</span>
+                </p>
+                <p>
+                    <i class="fas fa-heart"></i>
+                    <span>তোমার হাসি, তোমার কথা, তোমার চোখ – সবকিছু আমার পৃথিবীকে রঙিন করে রাখে। তুমি কি আমার ভালোবাসা চিরদিন ধরে রাখবে? এই ফেব্রুয়ারির ১৪ তারিখে আমি তোমাকে আমার মন খুলে বলতে চাই... </span>
+                </p>
+            </div>
+
+            <!-- big bold ask with button (reveals secret note) -->
+            <div class="propose-box">
+                <div class="propose-text">
+                    <i class="fas fa-heart"></i>  ভালোবাসা দিবসের বিশেষ মুহূর্ত  <i class="fas fa-heart"></i>
+                </div>
+                <button class="valentine-button" id="valentineBtn">
+                    <i class="fas fa-envelope-open-text"></i> আমার ভালোবাসার কথা 
+                </button>
+            </div>
+
+            <!-- hidden message that appears after click (explicit "i love you noor") with corrected spelling -->
+            <div id="secretMessage" class="secret-reveal">
+                <i class="fas fa-hand-holding-heart"></i>
+                <div>
+                    <span style="font-size:1.8rem; font-weight:700; color:#bf2f55;">❤️ ভালোবাসি নূর ❤️</span><br>
+                    <span style="font-size:1.2rem;">মহুয়া ইসলাম (নূর), আমি তোমাকে অসীম ভালোবাসি। তুমি আমার হৃদয়ের রানি। আজীবন তোমার পাশে থাকতে চাই।</span>
+                </div>
+            </div>
+
+            <!-- footer with date & eternal love (corrected spelling) -->
+            <div class="footer-note">
+                <span><i class="far fa-calendar-alt"></i> ১৪ ফেব্রুয়ারি</span>
+                <span><i class="fas fa-heart"></i> চিরকাল তোমারই</span>
+                <span><i class="fas fa-tag"></i> ভালোবাসা, তোর মহুয়া</span>
+            </div>
+
+            <!-- tiny signature line (just for style) -->
+            <p style="margin-top: 1.2rem; color:#c35775; font-size:1rem; opacity:0.9;"><i class="fas fa-ribbon"></i> ইতি: তোমার ভালোবাসার মানুষ <i class="fas fa-ribbon"></i></p>
+        </div>
+    </div>
+
+    <!-- Simple interactive javascript: on button click reveal i love you message  -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.getElementById('valentineBtn');
+            const secretDiv = document.getElementById('secretMessage');
+
+            button.addEventListener('click', function() {
+                // toggle the secret message with romantic effect
+                secretDiv.classList.toggle('show-secret');
+                
+                // change button icon/label slightly to indicate it worked
+                if (secretDiv.classList.contains('show-secret')) {
+                    button.innerHTML = '<i class="fas fa-heart-circle-check"></i> ভালোবাসা জানানো হলো ❤️';
+                    // optional: add a little bounce to heart
+                } else {
+                    button.innerHTML = '<i class="fas fa-envelope-open-text"></i> আমার ভালোবাসার কথা ';
+                }
+                
+                // create an extra floating heart (tiny visual delight)
+                const floatingHeart = document.createElement('i');
+                floatingHeart.classList.add('fas', 'fa-heart');
+                floatingHeart.style.position = 'fixed';
+                floatingHeart.style.left = Math.random() * 80 + 10 + '%';
+                floatingHeart.style.top = Math.random() * 60 + 20 + '%';
+                floatingHeart.style.fontSize = '3rem';
+                floatingHeart.style.color = '#ff7b9c';
+                floatingHeart.style.opacity = '0.5';
+                floatingHeart.style.pointerEvents = 'none';
+                floatingHeart.style.zIndex = '1000';
+                floatingHeart.style.transition = 'all 1.2s ease';
+                floatingHeart.style.animation = 'glow 0.8s ease-out';
+                document.body.appendChild(floatingHeart);
+                
+                // remove after 1.5 sec
+                setTimeout(() => {
+                    if (floatingHeart && floatingHeart.parentNode) {
+                        floatingHeart.style.opacity = '0';
+                        floatingHeart.style.transform = 'translateY(-30px)';
+                        setTimeout(() => {
+                            if (floatingHeart.parentNode) floatingHeart.remove();
+                        }, 600);
+                    }
+                }, 800);
+            });
+        });
+    </script>
+    <!-- extra floating hearts background (purely aesthetic) -->
+    <div style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:-1; overflow:hidden;">
+        <i class="fas fa-heart" style="position:absolute; top:8%; left:12%; font-size:2.2rem; color:#ffbfcb; opacity:0.2;"></i>
+        <i class="fas fa-heart" style="position:absolute; bottom:15%; right:8%; font-size:3.5rem; color:#ffa7b9; opacity:0.2;"></i>
+        <i class="fas fa-heart" style="position:absolute; top:30%; right:20%; font-size:2.8rem; color:#fbaac0; opacity:0.15;"></i>
+        <i class="fas fa-heart" style="position:absolute; bottom:30%; left:7%; font-size:4rem; color:#ffb6c7; opacity:0.15;"></i>
+        <i class="fas fa-star" style="position:absolute; top:18%; left:30%; font-size:1.5rem; color:#ffe2b0; opacity:0.3;"></i>
+    </div>
+</body>
+</html>
